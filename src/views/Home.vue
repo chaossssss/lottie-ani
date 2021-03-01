@@ -1,18 +1,33 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div id="container" class="container"></div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import lottie from 'lottie-web'
+import animationData from '../assets/data.json'
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  mounted() {
+    this.init()
+  },
+  methods: {
+    init() {
+      lottie.loadAnimation({
+        container: document.getElementById("container"), // the dom element
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: animationData, // the animation data
+      });
+    }
   }
 }
 </script>
+<style>
+.container {
+  width: 800px;
+  height: 600px;
+}
+</style>
